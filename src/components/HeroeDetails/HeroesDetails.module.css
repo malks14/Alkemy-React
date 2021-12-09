@@ -1,0 +1,12 @@
+.heroes__details-container {
+  background: #041c32;
+  text-align: center;
+  font-family: var(--font-family);
+  color: #d4943a;
+  font-size: x-large;
+  text-transform: uppercase;
+}
+
+span {
+  font-weight: bold;
+}

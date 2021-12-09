@@ -1,0 +1,60 @@
+.heroes__identity {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.heroes__result-content {
+  width: 70%;
+  margin-bottom: 10px;
+}
+
+.heroes__name {
+  font-size: x-large;
+}
+.heroes__name,
+.heroes__alignment,
+.heroes__avg {
+  color: white;
+  font-family: var(--font-family);
+}
+
+.heroes__alignment {
+  text-transform: uppercase;
+  font-size: larger;
+  flex: 0.5;
+  margin-left: 20px;
+}
+
+.alignmentgreen {
+  color: green;
+}
+.alignmentred {
+  color: red;
+}
+
+.heroes__result-action {
+  width: 100%;
+}
+
+.heroes__result-action button {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  background: rgb(13, 50, 153);
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 25px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.error {
+  color: #e92b2d;
+  font-weight: 600;
+  font-size: 20px;
+  font-family: var(--font-family);
+  text-transform: uppercase;
+}
