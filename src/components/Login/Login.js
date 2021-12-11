@@ -68,7 +68,7 @@ const Login = () => {
               />
             </div>
             <div className={styles.control}>
-              <label htmlFor="email">Password</label>
+              <label htmlFor="password">Password</label>
               <Field
                 id="password"
                 type="password"
@@ -84,7 +84,7 @@ const Login = () => {
             </div>
 
             <button type="submit" className={styles.button}>
-              Enviar
+              ENVIAR
             </button>
           </Form>
         )}

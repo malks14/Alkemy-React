@@ -20,6 +20,7 @@
 
 .heroes__alignment {
   text-transform: uppercase;
+  padding-right: 10px;
   font-size: larger;
   flex: 0.5;
   margin-left: 20px;
@@ -57,4 +58,16 @@
   font-size: 20px;
   font-family: var(--font-family);
   text-transform: uppercase;
+}
+
+.heroes__alignment-container {
+  margin-left: 10px;
+}
+
+.heroes__alignment-container.hero {
+  background-color: green;
+}
+
+.heroes__alignment-container.villain {
+  background-color: red;
 }

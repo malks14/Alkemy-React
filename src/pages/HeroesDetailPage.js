@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import heroesapi from "../api/heroesapi";
 import LoadingSpinner from "../components/UI/LoadingSpinner";
 
@@ -7,7 +7,7 @@ import HeroesDetails from "../components/HeroeDetails/HeroesDetails";
 
 const HeroesDetailPage = () => {
   const { heroId } = useParams();
-  const history = useHistory();
+
   const [hero, setHero] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -42,7 +42,6 @@ const HeroesDetailPage = () => {
           />
         </div>
       ) : null}
-      <button onClick={() => history.replace("/home")}>Back</button>
     </Fragment>
   );
 };

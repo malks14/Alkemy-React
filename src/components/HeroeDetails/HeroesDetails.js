@@ -1,13 +1,15 @@
+import { useHistory } from "react-router-dom";
 import React from "react";
 import styles from "./HeroesDetails.module.css";
 
 const HeroesDetails = ({ image, biography, appearance, name, work }) => {
+  const history = useHistory();
   return (
     <div className={styles["heroes__details-container"]}>
       <div className={styles["heroes__details-img"]}>
         <img alt={name} src={image.url} />
       </div>
-      <div>
+      <div className={styles["heroes__details-bio"]}>
         <h1>{name}</h1>
         <p>
           <span>Nombre:</span> {biography["full-name"]}
@@ -31,6 +33,12 @@ const HeroesDetails = ({ image, biography, appearance, name, work }) => {
           <span>Color de ojos:</span> {appearance["eye-color"]}
         </p>
       </div>
+      <button
+        className={styles["heroes__details-button"]}
+        onClick={() => history.replace("/home")}
+      >
+        Back
+      </button>
     </div>
   );
 };

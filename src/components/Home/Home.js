@@ -1,78 +1,112 @@
 import { useContext } from "react";
-import { useHistory } from "react-router-dom";
 import HeroContext from "../../store/hero-context";
+import {
+  getAvgPow,
+  getAvgSpeed,
+  getAvgRes,
+  getAvgComb,
+  getAvgFuerza,
+  getAvgHeight,
+  getAvgWeight,
+  getAvgIntel,
+  getStrongestStat,
+} from "../../helper/stats";
+import HomeCards from "./HomeCards";
 import styles from "./Home.module.css";
 
+import SportsKabaddiIcon from "@mui/icons-material/SportsKabaddi";
+import PsychologyIcon from "@mui/icons-material/Psychology";
+import ShieldIcon from "@mui/icons-material/Shield";
+import BoltIcon from "@mui/icons-material/Bolt";
+import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import StraightenIcon from "@mui/icons-material/Straighten";
+import ScaleIcon from "@mui/icons-material/Scale";
+import BatteryStdIcon from "@mui/icons-material/BatteryStd";
+
 const Home = () => {
-  const history = useHistory();
   const heroCtx = useContext(HeroContext);
   const hasHeroes = heroCtx.heroes.length > 0;
 
-  const addHeroHandler = (id) => {
-    heroCtx.removeHero(id);
-  };
-
-  const heroesDisplay = (
-    <div className={styles["heroes__home-display"]}>
-      {heroCtx.heroes.map((heroe, i) => {
-        return (
-          <>
-            <div className={styles["heroes__team-display"]} key={i}>
-              <div className={styles["heroes__team-card"]}>
-                <img
-                  className={styles["heroes__team-image"]}
-                  src={heroe.image.url}
-                  alt={heroe.name}
-                />
-                <div>
-                  <h2 className={styles.name}>{heroe.name}</h2>
-                  <p className={styles.name}>
-                    Intelligence: {heroe.powerstats.intelligence}
-                  </p>
-                  <p className={styles.name}>Power: {heroe.powerstats.power}</p>
-                  <p className={styles.name}>
-                    Combat: {heroe.powerstats.combat}
-                  </p>
-                  <p className={styles.name}>Speed: {heroe.powerstats.speed}</p>
-                  <p className={styles.name}>
-                    Strength: {heroe.powerstats.strength}
-                  </p>
-                  <p className={styles.name}>
-                    Durability: {heroe.powerstats.durability}
-                  </p>
-                  <div className={styles["heroes__result-button"]}>
-                    <button
-                      onClick={() => history.replace(`/heroes/${heroe.id}`)}
-                      className={styles["heroes__result-details"]}
-                    >
-                      Detalles
-                    </button>
-                    <button
-                      onClick={addHeroHandler.bind(null, heroe.id)}
-                      className={styles["heroes__result-remove"]}
-                    >
-                      Remover Heroe
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </>
-        );
-      })}
-    </div>
-  );
+  const avgIntel = `${getAvgIntel(heroCtx.heroes).toFixed(0)}`;
+  const avgComb = `${getAvgComb(heroCtx.heroes).toFixed(0)}`;
+  const avgRes = `${getAvgRes(heroCtx.heroes).toFixed(0)}`;
+  const avgPow = `${getAvgPow(heroCtx.heroes).toFixed(0)}`;
+  const avgSpe = `${getAvgSpeed(heroCtx.heroes).toFixed(0)}`;
+  const avgFuerza = `${getAvgFuerza(heroCtx.heroes).toFixed(0)}`;
+  const avgWeigh = `${getAvgWeight(heroCtx.heroes).toFixed(0)}`;
+  const avgHeight = `${getAvgHeight(heroCtx.heroes).toFixed(0)}`;
 
   return (
     <div className={styles["heroes__home-display"]}>
-      {hasHeroes ? (
-        <div>
-          <p className={styles.team}>TU EQUIPO ES:</p>
-          {heroesDisplay}
+      <div className={styles["heroes__home-stats_container"]}>
+        <div className={styles["heroes__home-stats_grid"]}>
+          <div className={styles["grid-box"]}>
+            <p>
+              <span>COMBATE</span>: {avgComb}
+            </p>
+            <SportsKabaddiIcon />
+          </div>
+          <div className={styles["grid-box"]}>
+            <p>
+              <span>RESISTENCIA</span>: {avgRes}
+            </p>
+            <BatteryStdIcon />
+          </div>
+          <div className={styles["grid-box"]}>
+            <p>
+              <span>INTELIGENCIA</span>: {avgIntel}
+            </p>
+            <PsychologyIcon />
+          </div>
+          <div className={styles["grid-box"]}>
+            <p>
+              <span>PODER</span>: {avgPow}
+            </p>
+            <ShieldIcon />
+          </div>
+          <div className={styles["grid-box"]}>
+            <p>
+              <span>VELOCIDAD</span>: {avgSpe}
+            </p>
+            <BoltIcon />
+          </div>
+          <div className={styles["grid-box"]}>
+            <p>
+              <span>FUERZA</span>: {avgFuerza}
+            </p>
+            <FitnessCenterIcon />
+          </div>
+          <div className={styles["grid-box"]}>
+            <p>
+              <span>PESO</span>: {avgWeigh}Kg
+            </p>
+            <ScaleIcon />
+          </div>
+          <div className={styles["grid-box"]}>
+            <p>
+              <span>ALTURA</span>: {avgHeight}cm
+            </p>
+            <StraightenIcon />
+          </div>
         </div>
-      ) : (
-        <p className={styles.team}>NO ARMASTE TU EQUIPO AUN</p>
-      )}
+        <div className={styles["heroes__home-stats_avg"]}>
+          <p>
+            <span>Categoria Equipo</span>:
+            {getStrongestStat(heroCtx.heroes).charAt(0).toUpperCase() +
+              getStrongestStat(heroCtx.heroes).slice(1)}
+          </p>
+        </div>
+      </div>
+      <div>
+        {hasHeroes ? (
+          <div className={styles["heroes__home"]}>
+            <p className={styles.team}>TU EQUIPO ES:</p>
+            <HomeCards />
+          </div>
+        ) : (
+          <p className={styles.team}>NO ARMASTE TU EQUIPO AUN</p>
+        )}
+      </div>
     </div>
   );
 };

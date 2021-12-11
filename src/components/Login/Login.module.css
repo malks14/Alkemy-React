@@ -9,6 +9,14 @@
   text-align: center;
   color: white;
 }
+.auth h1,
+.control label,
+.control input,
+.button,
+.error,
+.control input::placeholder {
+  font-family: var(--font-family);
+}
 
 .auth h1 {
   text-align: center;
@@ -33,6 +41,7 @@
   width: 100%;
   text-align: left;
   padding: 0.25rem;
+  font-family: var(--font-family);
 }
 
 .actions {
@@ -50,13 +59,13 @@
   border: 1px solid #ff4820;
   border-radius: 4px;
   padding: 0.5rem 2.5rem;
+  font-family: var(--font-family);
 }
 
 .error {
   color: #e92b2d;
   font-weight: 600;
   font-size: 12px;
-  font-family: var(--font-family);
 }
 
 @media screen and (max-width: 375px) {

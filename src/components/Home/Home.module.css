@@ -1,24 +1,28 @@
-.heroes__home-display {
-  width: 100%;
+.heroes__home-stats_container {
   display: inline-block;
-}
-.heroes__team-display {
-  width: 70%;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-  padding-bottom: 20px;
-}
-.heroes__team-card {
-  background-color: #fff;
+  margin-left: 50px;
 }
 
-.heroes__team-image {
-  width: 100%;
+.heroes__home-stats_grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  text-align: center;
+
+  font-family: var(--font-family);
+  color: #ff8a71;
+  border: 2px solid rgb(119, 213, 245);
 }
 
-.stats {
-  color: #000;
+.grid-box {
+  border-right: 2px solid lightblue;
+  padding: 5px;
+}
+
+.heroes__home-stats_avg {
+  padding-top: 20px;
+  color: white;
+  text-transform: uppercase;
+  font-size: larger;
 }
 
 .team,
@@ -31,56 +35,26 @@
   text-align: center;
   font-size: xx-large;
 }
-.heroes__result-button {
-  display: flex;
-}
-
-.heroes__result-remove,
-.heroes__result-details {
-  width: 100%;
-  padding: 0.5rem 1rem;
-  color: #fff;
-  font-family: var(--font-family);
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 25px;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.heroes__result-details {
-  background: chocolate;
-}
-.heroes__result-remove {
-  background: rgb(13, 50, 153);
-}
-
 /*MEDIA QUERIES*/
 @media screen and (min-width: 768px) {
-  .heroes__home-display {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .heroes__team-display {
-    text-align: center;
-    padding: 20px;
-    width: 70%;
-    margin: 0px;
-    padding: 0px;
-  }
-
-  .heroes__team-card {
-    width: 300px;
-  }
-
   .name,
   .team {
     text-align: center;
   }
-  .heroes__result-button {
-    display: block;
+  .heroes__home-stats_container {
+    margin-right: 10px;
+  }
+  .heroes__home-stats_grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 0.5rem;
+    text-align: center;
+    font-family: var(--font-family);
+    color: #ff8a71;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .heroes__home-stats_container {
+    margin-left: 150px;
   }
 }

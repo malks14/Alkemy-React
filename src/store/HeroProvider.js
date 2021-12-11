@@ -10,7 +10,6 @@ const heroReducer = (state, action) => {
     case "ADD":
       return { ...state, heroes: [...state.heroes, action.hero] };
     case "REMOVE":
-      // return state.filter((heroe) => heroe.id !== action.id);
       return {
         heroes: [...state.heroes.filter((heroe) => heroe.id !== action.id)],
       };
@@ -18,19 +17,6 @@ const heroReducer = (state, action) => {
       return state;
   }
 };
-// if (action.type === "ADD") {
-//   const updatedHeroes = state.heroes.concat(action.hero);
-//   return {
-//     heroes: updatedHeroes,
-//   };
-// }
-
-// if (action.type === "REMOVE") {
-//   const heroeUpdate = state.heroes.filter((heroe) => heroe.id !== action.id);
-//   return heroeUpdate;
-// }
-
-// return defaultHeroState;
 
 const HeroProvider = (props) => {
   const [heroState, dispatchHeroAction] = useReducer(
