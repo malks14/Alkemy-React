@@ -59,7 +59,9 @@ const Home = () => {
   const avgHeight = `${getAvgHeight(heroCtx.heroes).toFixed(0)}`;
 
   return (
-    <div className={styles["heroes__home-display"]}>
+    <div
+      className={`${styles["heroes__home-display"]} ${styles["section__padding"]}`}
+    >
       <div className={styles["heroes__home-stats_container"]}>
         <div className={styles["heroes__home-stats_grid"]}>
           <div className={styles["grid-box"]}>

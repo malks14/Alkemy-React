@@ -3,7 +3,6 @@ import HeroContext from "./hero-context";
 
 const defaultHeroState = {
   heroes: [],
-  alignment: [{ good: 0, bad: 0 }],
 };
 
 const heroReducer = (state, action) => {
@@ -12,11 +11,6 @@ const heroReducer = (state, action) => {
       return {
         ...state,
         heroes: [...state.heroes, action.hero],
-      };
-    case "ADD_ALIGNMENT":
-      return {
-        ...state,
-        alignment: [...state.alignment, action.alignment],
       };
     case "REMOVE_HERO":
       return {
@@ -36,9 +30,6 @@ const HeroProvider = (props) => {
   const addHeroHandler = (hero) => {
     dispatchHeroAction({ type: "ADD_HERO", hero: hero });
   };
-  const addAlignmentHandler = (alignment) => {
-    dispatchHeroAction({ type: "ADD_ALIGNMENT", alignment: alignment });
-  };
 
   const removeHeroHandler = (id) => {
     dispatchHeroAction({ type: "REMOVE_HERO", id: id });
@@ -46,8 +37,6 @@ const HeroProvider = (props) => {
 
   const heroContext = {
     heroes: heroState.heroes,
-    alignment: heroState.alignment,
-    addAlignment: addAlignmentHandler,
     addHero: addHeroHandler,
     removeHero: removeHeroHandler,
   };

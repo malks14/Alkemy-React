@@ -71,3 +71,7 @@
 .heroes__alignment-container.villain {
   background-color: red;
 }
+
+.heroes__result-action.added button {
+  background-color: green;
+}

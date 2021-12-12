@@ -7,7 +7,6 @@ import styles from "./SearchForm.module.css";
 const SearchForm = () => {
   const [searchData, setSearchData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
 
   const fetchHeroes = async () => {
     let heroresponse = await heroesapi.get(`/search/${searchData}`);
@@ -31,7 +30,9 @@ const SearchForm = () => {
     setSearchData([]);
   };
   return (
-    <div className={styles["heroes__search"]}>
+    <div
+      className={`${styles["heroes__search"]} ${styles["section__padding"]}`}
+    >
       <h3 className={styles["heroes__form-alert"]}>
         Tu equipo debe estar compuesto por 3 heroes y 3 villanos
       </h3>
@@ -47,7 +48,7 @@ const SearchForm = () => {
             onChange={dataChangeHandler}
           />
           <button className={styles.button} type="submit">
-            Search
+            Buscar
           </button>
         </div>
       </form>

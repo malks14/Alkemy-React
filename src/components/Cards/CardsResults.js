@@ -102,7 +102,11 @@ const CardsResults = ({ searchData }) => {
       {errors ? (
         <p className={styles.error}>{errors}</p>
       ) : (
-        <div className={styles["heroes__result-action"]}>
+        <div
+          className={`${styles["heroes__result-action"]} ${`${
+            isAdded ? styles.added : null
+          }`}`}
+        >
           <button onClick={addingHeroHandler}>
             {!isAdded ? "Agregar Heroe" : "Ya esta en tu equipo"}
           </button>

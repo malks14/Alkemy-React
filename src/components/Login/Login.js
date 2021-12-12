@@ -56,7 +56,7 @@ const Login = () => {
       >
         {({ errors }) => (
           <Form>
-            <h1>Login</h1>
+            <h1>Iniciar sesion</h1>
             <div className={styles.control}>
               <label htmlFor="email">Email</label>
               <Field id="email" type="email" name="email" placeholder="Email" />
@@ -68,12 +68,12 @@ const Login = () => {
               />
             </div>
             <div className={styles.control}>
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">Contraseña</label>
               <Field
                 id="password"
                 type="password"
                 name="password"
-                placeholder="Password"
+                placeholder="Contraseña"
               />
               <ErrorMessage
                 name="password"

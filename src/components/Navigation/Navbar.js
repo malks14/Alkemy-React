@@ -48,7 +48,7 @@ const Navbar = () => {
             {!isLoggedIn && (
               <li>
                 <NavLink activeClassName={styles.active} to="/login">
-                  Sign In
+                  Iniciar sesion
                 </NavLink>
               </li>
             )}
@@ -56,7 +56,7 @@ const Navbar = () => {
         </nav>
         {isLoggedIn && (
           <button onClick={logoutHandler} type="button">
-            Sign Out
+            Cerrar sesion
           </button>
         )}
       </div>
@@ -93,7 +93,7 @@ const Navbar = () => {
               </nav>
               {isLoggedIn && (
                 <button onClick={logoutHandler} type="button">
-                  Sign Out
+                  Cerrar sesion
                 </button>
               )}
             </div>
