@@ -4,7 +4,7 @@ import styles from "./Landing.module.css";
 const Landing = () => {
   return (
     <section className={styles.starting}>
-      <h1>Start your SuperHeroe Team!</h1>
+      <h1>Comienza tu equipo de SuperHeroess!</h1>
     </section>
   );
 };
