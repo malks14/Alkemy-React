@@ -11,16 +11,6 @@ const CardsResults = ({ searchData }) => {
 
   const { name, image, id, biography, powerstats, appearance } = searchData;
 
-  // const addAlignment = () => {
-  //   if (biography.alignment === "good") {
-  //     if (heroCtx.alignment.good < 3) {
-  //       heroCtx.addAlignment({
-  //         good: heroCtx.alignment.good + 1,
-  //       });
-  //     }
-  //   }
-  // };
-
   const onSetNewMember = (searchData) => {};
 
   const addingHeroHandler = useCallback(() => {
@@ -117,15 +107,3 @@ const CardsResults = ({ searchData }) => {
 };
 
 export default CardsResults;
-
-// else if (
-//       biography.alignment === "good" &&
-//       heroCtx.heroes.heroeContador.length > 2
-//     ) {
-//       return setErrors("Ya tiene suficientes Heroes");
-//     } else if (
-//       biography.alignment === "bad" &&
-//       heroCtx.heroes.biography.alignment.bad.length > 2
-//     ) {
-//       return setErrors("Ya tiene suficientes Villanos");
-//     }

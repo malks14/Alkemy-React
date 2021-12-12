@@ -71,17 +71,3 @@ const SearchForm = () => {
 };
 
 export default React.memo(SearchForm);
-
-//  {
-//    searchData ? (
-//      searchData.results.map((character, i) => {
-//        return (
-//          <div className={styles["heroes__search-result_content"]} key={i}>
-//            <CardsResults searchData={character} />
-//          </div>
-//        );
-//      })
-//    ) : (
-//      <p>{error}</p>
-//    );
-//  }
