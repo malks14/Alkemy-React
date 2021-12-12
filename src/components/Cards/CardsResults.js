@@ -1,4 +1,4 @@
-import { useContext, useState, useCallback, useEffect } from "react";
+import { useContext, useState, useCallback } from "react";
 import styles from "./CardsResults.module.css";
 import Chart from "react-apexcharts";
 import HeroContext from "../../store/hero-context";
@@ -11,19 +11,26 @@ const CardsResults = ({ searchData }) => {
 
   const { name, image, id, biography, powerstats, appearance } = searchData;
 
-  const addAlignment = () => {
-    if (biography.alignment === "good") {
-      if (heroCtx.alignment.good < 3) {
-        heroCtx.addAlignment({
-          good: heroCtx.alignment.good + 1,
-        });
-      }
-    }
-  };
+  // const addAlignment = () => {
+  //   if (biography.alignment === "good") {
+  //     if (heroCtx.alignment.good < 3) {
+  //       heroCtx.addAlignment({
+  //         good: heroCtx.alignment.good + 1,
+  //       });
+  //     }
+  //   }
+  // };
+
+  const onSetNewMember = (searchData) => {};
 
   const addingHeroHandler = useCallback(() => {
     setIsAdded(true);
-
+    const countAlignment = (alignment) => {
+      return heroCtx.heroes.reduce(
+        (acc, cur) => (cur.biography.alignment === alignment ? ++acc : acc),
+        0
+      );
+    };
     if (heroCtx.heroes.length === 6) {
       return setErrors("Tu equipo ya esta completo");
     } else if (
@@ -31,6 +38,16 @@ const CardsResults = ({ searchData }) => {
       isAdded
     ) {
       return setErrors("El Heroe ya pertenece a tu equipo");
+    } else if (
+      countAlignment("good") === 3 &&
+      searchData.biography.alignment === "good"
+    ) {
+      return setErrors("Hay suficientes Heroes en tu equipo");
+    } else if (
+      countAlignment("bad") === 3 &&
+      searchData.biography.alignment === "bad"
+    ) {
+      return setErrors("Hay suficientes Villanos en tu equipo");
     }
 
     heroCtx.addHero({
