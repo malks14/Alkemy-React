@@ -1,6 +1,7 @@
 import { useHistory } from "react-router-dom";
 import React from "react";
 import styles from "./HeroesDetails.module.css";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const HeroesDetails = ({ image, biography, appearance, name, work }) => {
   const history = useHistory();
@@ -37,7 +38,7 @@ const HeroesDetails = ({ image, biography, appearance, name, work }) => {
         className={styles["heroes__details-button"]}
         onClick={() => history.replace("/home")}
       >
-        Back
+        <ArrowBackIcon className={styles["heroes__details-arrow"]} />
       </button>
     </div>
   );

@@ -26,7 +26,7 @@ export const getAvgWeight = (heroes) => {
   );
 };
 
-export const getAvgIntel = (heroes) => {
+export const getIntel = (heroes) => {
   let intel = [];
   if (heroes.length > 0) {
     heroes.map((currentValue) =>
@@ -40,7 +40,7 @@ export const getAvgIntel = (heroes) => {
   );
 };
 
-export const getAvgFuerza = (heroes) => {
+export const getFuerza = (heroes) => {
   let durability = [];
   if (heroes.length > 0) {
     heroes.map((currentValue) =>
@@ -54,7 +54,7 @@ export const getAvgFuerza = (heroes) => {
   );
 };
 
-export const getAvgComb = (heroes) => {
+export const getComb = (heroes) => {
   let combat = [];
   if (heroes.length > 0) {
     heroes.map((currentValue) =>
@@ -68,7 +68,7 @@ export const getAvgComb = (heroes) => {
   );
 };
 
-export const getAvgRes = (heroes) => {
+export const getRes = (heroes) => {
   let durability = [];
   if (heroes.length > 0) {
     heroes.map((currentValue) =>
@@ -82,7 +82,7 @@ export const getAvgRes = (heroes) => {
   );
 };
 
-export const getAvgPow = (heroes) => {
+export const getPow = (heroes) => {
   let power = [];
   if (heroes.length > 0) {
     heroes.map((currentValue) =>
@@ -96,7 +96,7 @@ export const getAvgPow = (heroes) => {
   );
 };
 
-export const getAvgSpeed = (heroes) => {
+export const getSpeed = (heroes) => {
   let speed = [];
   if (heroes.length > 0) {
     heroes.map((currentValue) =>
@@ -108,26 +108,4 @@ export const getAvgSpeed = (heroes) => {
       (previousValue = previousValue + currentValue),
     0
   );
-};
-
-export const getStrongestStat = (heroes) => {
-  const getKeyByValue = (object, value) => {
-    return Object.keys(object).find((key) => object[key] === value);
-  };
-
-  let arrStats = [];
-  if (heroes.length > 0) {
-    heroes.map((h) => {
-      let powerstats = Object.values(h.powerstats);
-      let maxStat = Math.max(...powerstats).toString();
-      let stat = getKeyByValue(h.powerstats, maxStat);
-      arrStats.push(stat);
-    });
-  }
-  return Object.entries(
-    arrStats.reduce((acc, v) => {
-      acc[v] = acc[v] ? acc[v] + 1 : 1;
-      return acc;
-    }, {})
-  ).reduce((acc, v) => (v[1] >= acc[1] ? v : acc), [null, 0])[0];
 };

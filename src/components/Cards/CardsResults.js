@@ -1,4 +1,4 @@
-import { useContext, useState, useCallback } from "react";
+import { useContext, useState, useCallback, useEffect } from "react";
 import styles from "./CardsResults.module.css";
 import Chart from "react-apexcharts";
 import HeroContext from "../../store/hero-context";
@@ -11,18 +11,25 @@ const CardsResults = ({ searchData }) => {
 
   const { name, image, id, biography, powerstats, appearance } = searchData;
 
-  // const colocarNuevoHeroe = searchData => {
-  //   const contadorAlianza = (alignment) => {
-  //     return heroes.reduce((previousValue, currentValue) => currentValue.biography.alignment === alignment > ++previousValue : previousValue), 0);
-  //   }
-  // }
+  const addAlignment = () => {
+    if (biography.alignment === "good") {
+      if (heroCtx.alignment.good < 3) {
+        heroCtx.addAlignment({
+          good: heroCtx.alignment.good + 1,
+        });
+      }
+    }
+  };
 
   const addingHeroHandler = useCallback(() => {
     setIsAdded(true);
-    // colocarNuevoHeroe(searchData);
+
     if (heroCtx.heroes.length === 6) {
       return setErrors("Tu equipo ya esta completo");
-    } else if (heroCtx.heroes.some((h) => h.id === searchData.id) || isAdded) {
+    } else if (
+      heroCtx.heroes.some((hero) => hero.id === searchData.id) ||
+      isAdded
+    ) {
       return setErrors("El Heroe ya pertenece a tu equipo");
     }
 
@@ -34,7 +41,7 @@ const CardsResults = ({ searchData }) => {
       biography,
       appearance,
     });
-  }, [heroCtx, searchData, id.name, image, powerstats, biography, appearance]);
+  }, [heroCtx, searchData, id, name, image, powerstats, biography, appearance]);
 
   const { intelligence, strength, speed, durability, power, combat } =
     powerstats;
@@ -89,3 +96,15 @@ const CardsResults = ({ searchData }) => {
 };
 
 export default CardsResults;
+
+// else if (
+//       biography.alignment === "good" &&
+//       heroCtx.heroes.heroeContador.length > 2
+//     ) {
+//       return setErrors("Ya tiene suficientes Heroes");
+//     } else if (
+//       biography.alignment === "bad" &&
+//       heroCtx.heroes.biography.alignment.bad.length > 2
+//     ) {
+//       return setErrors("Ya tiene suficientes Villanos");
+//     }

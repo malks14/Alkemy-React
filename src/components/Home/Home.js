@@ -1,15 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import HeroContext from "../../store/hero-context";
 import {
-  getAvgPow,
-  getAvgSpeed,
-  getAvgRes,
-  getAvgComb,
-  getAvgFuerza,
+  getPow,
+  getSpeed,
+  getRes,
+  getComb,
+  getFuerza,
   getAvgHeight,
   getAvgWeight,
-  getAvgIntel,
-  getStrongestStat,
+  getIntel,
 } from "../../helper/stats";
 import HomeCards from "./HomeCards";
 import styles from "./Home.module.css";
@@ -25,14 +24,37 @@ import BatteryStdIcon from "@mui/icons-material/BatteryStd";
 
 const Home = () => {
   const heroCtx = useContext(HeroContext);
+  const [teamSum, setTeamSum] = useState({});
+  const [teamCategory, setTeamCategory] = useState(null);
+
+  useEffect(() => {
+    let max = 0;
+    let maxKey = "";
+    const objSum = heroCtx.heroes.reduce((acc, obj) => {
+      for (const key in obj.powerstats) {
+        let value = Number.parseInt(obj.powerstats[key]) || 0;
+        acc[key] = (acc[key] || 0) + value;
+      }
+      return acc;
+    }, {});
+    setTeamSum(objSum);
+    for (const [key, value] of Object.entries(objSum)) {
+      if (value > max && key !== "weight" && key !== "height") {
+        max = value;
+        maxKey = key;
+      }
+    }
+    setTeamCategory(maxKey.toUpperCase());
+  }, [heroCtx]);
+
   const hasHeroes = heroCtx.heroes.length > 0;
 
-  const avgIntel = `${getAvgIntel(heroCtx.heroes).toFixed(0)}`;
-  const avgComb = `${getAvgComb(heroCtx.heroes).toFixed(0)}`;
-  const avgRes = `${getAvgRes(heroCtx.heroes).toFixed(0)}`;
-  const avgPow = `${getAvgPow(heroCtx.heroes).toFixed(0)}`;
-  const avgSpe = `${getAvgSpeed(heroCtx.heroes).toFixed(0)}`;
-  const avgFuerza = `${getAvgFuerza(heroCtx.heroes).toFixed(0)}`;
+  const avgIntel = `${getIntel(heroCtx.heroes).toFixed(0)}`;
+  const avgComb = `${getComb(heroCtx.heroes).toFixed(0)}`;
+  const avgRes = `${getRes(heroCtx.heroes).toFixed(0)}`;
+  const avgPow = `${getPow(heroCtx.heroes).toFixed(0)}`;
+  const avgSpe = `${getSpeed(heroCtx.heroes).toFixed(0)}`;
+  const avgFuerza = `${getFuerza(heroCtx.heroes).toFixed(0)}`;
   const avgWeigh = `${getAvgWeight(heroCtx.heroes).toFixed(0)}`;
   const avgHeight = `${getAvgHeight(heroCtx.heroes).toFixed(0)}`;
 
@@ -91,9 +113,7 @@ const Home = () => {
         </div>
         <div className={styles["heroes__home-stats_avg"]}>
           <p>
-            <span>Categoria Equipo</span>:
-            {getStrongestStat(heroCtx.heroes).charAt(0).toUpperCase() +
-              getStrongestStat(heroCtx.heroes).slice(1)}
+            <span>Categoria Equipo</span>:{teamCategory}
           </p>
         </div>
       </div>

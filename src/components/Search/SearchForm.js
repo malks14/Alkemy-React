@@ -7,7 +7,7 @@ import styles from "./SearchForm.module.css";
 const SearchForm = () => {
   const [searchData, setSearchData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  //   const [error, setError] = useState("");
+  const [error, setError] = useState("");
 
   const fetchHeroes = async () => {
     let heroresponse = await heroesapi.get(`/search/${searchData}`);
@@ -28,7 +28,7 @@ const SearchForm = () => {
     event.preventDefault();
     setIsLoading(true);
     fetchHeroes();
-    setSearchData("");
+    setSearchData([]);
   };
   return (
     <div className={styles["heroes__search"]}>
@@ -63,10 +63,24 @@ const SearchForm = () => {
           })}
         </div>
       ) : (
-        <p className={styles.error}>Heroe no encontrado</p>
+        <p className={styles.message}>Recuerda buscar tu Heroe en ingles</p>
       )}
     </div>
   );
 };
 
 export default React.memo(SearchForm);
+
+//  {
+//    searchData ? (
+//      searchData.results.map((character, i) => {
+//        return (
+//          <div className={styles["heroes__search-result_content"]} key={i}>
+//            <CardsResults searchData={character} />
+//          </div>
+//        );
+//      })
+//    ) : (
+//      <p>{error}</p>
+//    );
+//  }
