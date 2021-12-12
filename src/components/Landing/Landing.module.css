@@ -4,10 +4,10 @@
   font-family: var(--font-family);
 }
 
-.starting h1 {
+.h1 {
   font-size: 5rem;
-  color: #fff;
   font-family: var(--font-family);
+  color: #1b78de;
 }
 
 @media screen and (max-width: 375px) {
