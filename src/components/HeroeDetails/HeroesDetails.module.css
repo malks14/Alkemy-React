@@ -39,7 +39,6 @@ span {
 /* MEDIA QUERIES */
 @media screen and (min-width: 768px) {
   .heroes__details-img {
-    width: 50%;
     margin-left: 25%;
   }
 }
@@ -67,9 +66,5 @@ span {
 
   .heroes__details-bio {
     margin-left: 100px;
-  }
-
-  .heroes__details-img {
-    justify-self: start;
   }
 }

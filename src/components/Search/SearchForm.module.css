@@ -31,7 +31,7 @@
   font-weight: 400;
   font-size: 20px;
   line-height: 28px;
-  border: 2px solid var(--color-footer);
+  border: 0px;
   outline: none;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -53,6 +53,10 @@
 
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+
+.section__padding {
+  padding: 2rem 4rem;
 }
 
 .message {

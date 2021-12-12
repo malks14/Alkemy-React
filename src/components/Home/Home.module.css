@@ -14,8 +14,9 @@
 .section__padding {
   padding: 2rem 4rem;
 }
-s .grid-box {
-  border-right: 2px solid lightblue;
+.grid-box {
+  border-right: 2px solid rgb(96, 99, 100);
+  border-bottom: 2px solid rgb(96, 99, 100);
   padding: 5px;
 }
 
@@ -52,5 +53,9 @@ s .grid-box {
     text-align: center;
     font-family: var(--font-family);
     color: #ff8a71;
+  }
+
+  .grid-box {
+    border-bottom: none;
   }
 }
